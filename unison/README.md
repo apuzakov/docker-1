@@ -19,8 +19,8 @@ sudo docker run -d -v /path/to/data --name synceddata ubuntu echo Data-only cont
 ... and register the key on the remote server
 
 ```
-sudo docker run -it --name sshdata ssh-client ssh-keygen -t rsa -C "key for docker unison"
-sudo docker run -it --rm --volumes-from sshdata ssh-client ssh-copy-id [-p <remote-port>] [<user>@]<remote-ip>
+sudo docker run -it --name sshdata ssh-client thomass/ssh-keygen -t rsa -C "key for docker unison"
+sudo docker run -it --rm --volumes-from sshdata thomass/ssh-client ssh-copy-id [-p <remote-port>] [<user>@]<remote-ip>
 ```
 
 ## create a data volume container for all unison data
@@ -44,7 +44,7 @@ root = ssh://[<user>@]<remote-ip>[:<remote-port>]//path/to/data
 
 # usage
 
-Now you can run a synchronization as following
+Now you can run a synchronization any time as following
 
 ```
 sudo docker run -it --rm --volumes-from unisondata thomass/unison

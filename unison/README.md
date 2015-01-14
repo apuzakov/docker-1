@@ -19,7 +19,7 @@ sudo docker run -d -v /path/to/data --name synceddata ubuntu echo Data-only cont
 ... and register the key on the remote server
 
 ```
-sudo docker run -it --name sshdata ssh-client thomass/ssh-keygen -t rsa -C "key for docker unison"
+sudo docker run -it --name sshdata thomass/ssh-client ssh-keygen -t rsa -C "key for docker unison"
 sudo docker run -it --rm --volumes-from sshdata thomass/ssh-client ssh-copy-id [-p <remote-port>] [<user>@]<remote-ip>
 ```
 

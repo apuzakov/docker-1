@@ -1,3 +1,11 @@
+This image runs plain unison as entrypoint. It is adviced to create external docker volume containers for:
+
+* /path/to/data - the destination of the sync
+* /root/.ssh - the ssh key
+* /root/.unison - the unison working data
+
+If you create a _default.prf_ in the working directory of unison, the docker container would not need any further options and running those default settings.
+
 # setup
 
 ## create a data volume container for the data to synchronize

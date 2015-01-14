@@ -3,20 +3,41 @@
 ## create a data volume container for the data to synchronize
 
 ```
-sudo docker run -d -v /path/to/data --name unisondata ubuntu echo Data-only container
+sudo docker run -d -v /path/to/data --name synceddata ubuntu echo Data-only container
 ```
 
-## create a data volume container for unison setup data
+## create a data volume container for the ssh key
+
+... and register the key on the remote server
 
 ```
-sudo docker run -it --volumes-from unisondata thomass/unison bash
+sudo docker run -it --name sshdata ssh-client ssh-keygen -t rsa -C "key for docker unison"
+sudo docker run -it --rm --volumes-from sshdata ssh-client ssh-copy-id [-p <remote-port>] [<user>@]<remote-ip>
 ```
 
-There you can first register your ssh key on the remote server
+## create a data volume container for all unison data
 
-# mandatory volumes
+```
+sudo docker run -d --name unisondata --volumes-from synceddata --volumes-from sshdata -v /root/.unison ubuntu
+```
 
-* /root/.unison
-* /root/.ssh
+## setup the default sync profile
 
-Those volume should be maintained in a separate data volume container
+```
+sudo docker run -it --rm --volumes-from unisondata ubuntu vim.tiny /root/.unison/default.prf
+```
+
+Insert following (example) settings
+
+```
+root = /path/to/data
+root = ssh://[<user>@]<remote-ip>[:<remote-port>]//path/to/data
+```
+
+# usage
+
+Now you can run a synchronization as following
+
+```
+sudo docker run -it --rm --volumes-from unisondata thomass/unison
+```

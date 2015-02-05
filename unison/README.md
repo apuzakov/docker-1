@@ -11,7 +11,7 @@ If you create a _default.prf_ in the working directory of unison, the docker con
 ## create a data volume container for the data to synchronize
 
 ```
-sudo docker run -d -v /path/to/data --name synceddata ubuntu echo Data-only container
+sudo docker create -v /path/to/data --name synceddata ubuntu
 ```
 
 ## create a data volume container for the ssh key

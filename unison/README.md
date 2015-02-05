@@ -26,7 +26,7 @@ sudo docker run -it --rm --volumes-from sshdata thomass/ssh-client ssh-copy-id [
 ## create a data volume container for all unison data
 
 ```
-sudo docker run -d --name unisondata --volumes-from synceddata --volumes-from sshdata -v /root/.unison ubuntu
+sudo docker create --name unisondata --volumes-from synceddata --volumes-from sshdata -v /root/.unison ubuntu
 ```
 
 ## setup the default sync profile

@@ -1,0 +1,20 @@
+---
+- name: Configure webserver with nginx
+  hosts: localhost
+  sudo: True
+  vars:
+    conf_file: /etc/nginx/sites-available/default
+    server_name: localhost
+  tasks:
+    - name: install nginx
+      apt: name=nginx update_cache=yes
+    - name: copy nginx config file
+      template: src=templates/nginx.conf.j2 dest={{ conf_file }}
+    - name: enable configuration
+      file: >
+       dest=/etc/nginx/sites-enabled/default
+       src={{ conf_file }}
+    - name: copy index.html
+      copy: src=files/index.html dest=/usr/share/nginx/html/index.html mode=0644
+    - name: restart nginx
+      service: name=nginx state=restarted

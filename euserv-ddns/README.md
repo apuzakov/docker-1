@@ -3,7 +3,7 @@ This container is permanently calling the euserv DDNS server updating your IP
 # Usage
 
 ```
-sudo docker run -d -e AUTTHASH=<yourEuservAuthHash> --name euserv thomass/euserv-ddns
+sudo docker run -d -e AUTHHASH=<yourEuservAuthHash> --name euserv thomass/euserv-ddns
 ```
 
 # environment variables

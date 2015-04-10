@@ -1,0 +1,41 @@
+---
+- name: update packages on localhost
+  hosts: localhost
+  gather_facts: no
+  sudo: True
+  tasks:
+    - name: enshure docker ansible client image is present
+      docker_image:
+        name: docker_ansible_client
+        path: docker_ansible_client
+        state: present
+
+    - name: create client container
+      docker:
+        image: docker_ansible_client
+        name: ansible_client
+        detach: False
+        expose: 80
+        ports:
+        - "8081:80"
+        state: running
+
+    - name: add container to the hosts inventory
+      add_host:
+        hostname: "{{ item.Name }}"
+        groups: docker
+        ansible_ssh_host: "{{ item.NetworkSettings.IPAddress }}"
+        ansible_ssh_port: 22
+      when: item.State.Running == True
+      with_items: docker_containers
+
+- name: run ansible on docker client
+  hosts: docker
+  remote_user: root
+  tasks:
+    - name: install apache
+      apt: name=apache2 state=present update_cache=yes
+
+
+    - name: enshure apache is running
+      service: name=apache2 state=started

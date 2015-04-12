@@ -1,8 +1,0 @@
----
-- name: install apache
-  apt: name=apache2 state=present update_cache=yes
-
-
-- name: enshure apache is running
-  service: name=apache2 state=started
-

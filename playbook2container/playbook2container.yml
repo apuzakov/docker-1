@@ -1,5 +1,5 @@
 ---
-- name: update packages on localhost
+- name: prepare docker container for tasks
   hosts: localhost
   gather_facts: no
   sudo: True
@@ -17,7 +17,7 @@
         detach: False
         expose: 80
         ports:
-        - "8081:80"
+        - "8080:80"
         state: running
 
     - name: add container to the hosts inventory
@@ -29,13 +29,9 @@
       when: item.State.Running == True
       with_items: docker_containers
 
-- name: run ansible on docker client
+- name: run user tasks in the client container
   hosts: docker
   remote_user: root
   tasks:
-    - name: install apache
-      apt: name=apache2 state=present update_cache=yes
-
-
-    - name: enshure apache is running
-      service: name=apache2 state=started
+    - name: include container tasks
+      include: container_tasks/tasks.yml

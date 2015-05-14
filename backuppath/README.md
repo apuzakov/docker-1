@@ -16,7 +16,7 @@ sudo docker run --rm --volumes-from my_volume -v /host/backup/path:/backup -e SO
 __Restore:__
 
 ```
-sudo docker run --rm --volumes-from my_volume -v /host/backup/path:/backup -e SOURCE=/backup/2015-05-13_backup.tar.7z thomass/backuppath restore
+sudo docker run --rm --volumes-from my_volume -v /host/backup/path:/backup -e SOURCE=2015-05-13_backup.tar.7z thomass/backuppath restore
 ```
 
 1. `my_volume` - the same like during the backup

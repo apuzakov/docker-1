@@ -36,4 +36,4 @@ for line in sys.stdin:
     checkline(line.rstrip())
 
 for entry in result:
-    print "/" + entry
+    print "/" + entry + "*"

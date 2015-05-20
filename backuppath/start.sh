@@ -20,7 +20,7 @@ function backup(){
 
 function restore(){
   echo "RE STOREs"
-  if [[ -f "${BACKUP_DIR}/${SOURCE}" ]]
+  if [[ ! -z $(ls "${BACKUP_DIR}/${SOURCE}") ]]
   then
     7zr e "${BACKUP_DIR}/${SOURCE}" -o/tmp/backup
     # remote previous directories
@@ -30,7 +30,7 @@ function restore(){
     tar --same-owner -C / -pxf /tmp/backup/*.tar
     rm -rf /tmp/backup
   else
-    echo "No such file: ${BACKUP_DIR}/${SOURCE}"
+    echo "No such backup file: ${BACKUP_DIR}/${SOURCE}"
   fi
 }
 

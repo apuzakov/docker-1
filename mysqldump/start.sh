@@ -58,7 +58,7 @@ function restore_local(){
   /etc/init.d/mysql stop
 
   rm -rf /var/lib/mysql/*
-  cp -a /tmp/mysql /var/lib
+  cp -a /tmp/mysql/* /var/lib/mysql
   chown -R ${MYSQL_UID}:${MYSQL_GID} /var/lib/mysql
 }
 

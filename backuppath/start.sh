@@ -23,7 +23,6 @@ function restore(){
   echo "Restore backup ${BACKUP_DIR}"
   if [[ ! -z $(ls "${BACKUP_DIR}"/${SOURCE} 2>/dev/null) ]]
   then
-    echo "Backup archive is: $(ls ${BACKUP_DIR}/${SOURCE})"
     7zr e "${BACKUP_DIR}"/${SOURCE} -o/tmp/backup
     # remove previous directories
     echo "Clear and restore paths contained in archive: "

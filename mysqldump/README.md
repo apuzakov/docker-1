@@ -23,7 +23,7 @@ sudo docker run --rm --link mysql_server:mysqlserver -v /host/backup/dir:/backup
 
 _Local Backup:_
 
-Just replace the __--link__ option with the __--volumes-from__ option.
+Just replace the __--link left:right__ option with the __--volumes-from left__ option.
 
 __Restore:__
 
@@ -39,7 +39,7 @@ sudo docker run --rm --link mysql_server:mysqlserver -v /host/backup/dir:/backup
 
 _Local Restore:_
 
-As with local backup, just replace the __--link__ option with the __--volumes-from__ option.
+As with local backup, just replace the __--link left:right__ option with the __--volumes-from left__ option.
 
 __Predefined variables:__
 

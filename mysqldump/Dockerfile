@@ -8,6 +8,8 @@ RUN \
   apt-get install -y p7zip && \
   apt-get clean
 
+RUN sed -i 's/var\/lib\/mysql/tmp\/mysql/g' /etc/mysql/my.cnf
+
 ADD start.sh /root/start.sh
 
 VOLUME ["/backup"]

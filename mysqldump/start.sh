@@ -13,9 +13,9 @@ function backup(){
     then rm "${backupfile}"
   fi
 
-  if [[ -z MYSQLSERVER_NAME ]]
-    then backup_local()
-    else backup_remote()
+  if [[ -z $MYSQLSERVER_NAME ]]
+    then backup_local
+    else backup_remote
   fi
   chown -R user1000:user1000 /backup
 }
@@ -38,9 +38,9 @@ function backup_local(){
 }
 
 function restore(){
-  if [[ -z MYSQLSERVER_NAME ]]
-    then restore_local()
-    else restore_remote()
+  if [[ -z $MYSQLSERVER_NAME ]]
+    then restore_local
+    else restore_remote
   fi
 }
 

@@ -1,10 +1,24 @@
 Ansible
 =======
 
-This is a base docker image containing Ansible.
+This is a base docker image for running Ansible Playbooks during a Docker build.
 
 * The image is build from code from the ansible git repository.
-* The image is meant to be a base image and thus provides no CMD / ENTRYPOINT
+* The image not meant to be run standalone and provides no CMD / ENTRYPOINT
+
+Usage
+-----
+
+* Set `hosts: localhost` in your playbook
+* Run the playbook as following:
+
+```
+ADD playbook /playbook/
+RUN \
+ cd /playbook && \
+ /opt/ansible/bin/ansible-playbook -c local site.yml
+```
+
 
 Variables
 ---------

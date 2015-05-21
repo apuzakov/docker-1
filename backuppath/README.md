@@ -3,6 +3,10 @@ Docker Backup Paths
 
 This is a docker image for making fast and easy backups of other docker containers volumes.
 
+* The archive is compressed with 7zip
+* The name of created backups has the pattern _yyyy-MM-dd-backup.tar.7z_
+* During restore all files inside the originally archived paths will be deleted to clear files not in the archive.
+
 Usage
 -----
 

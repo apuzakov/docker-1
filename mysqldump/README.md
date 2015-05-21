@@ -15,7 +15,13 @@ __Backup:__
 _Remote Backup:_
 
 ```
-sudo docker run --rm --link mysql_server:mysqlserver -v /host/backup/dir:/backup -e DBUSER=root -e DBPASS=mysecret -e DATABASE=mydatabase thomass/mysqldump backup
+sudo docker run --rm \
+ --link mysql_server:mysqlserver \
+ -v /host/backup/dir:/backup \
+ -e DBUSER=root \
+ -e DBPASS=mysecret \
+ -e DATABASE=mydatabase \
+ thomass/mysqldump backup
 ```
 
 1. `mysql_server` - the container the mysql server is running in
@@ -30,7 +36,13 @@ __Restore:__
 _Remote Restore:_
 
 ```
-sudo docker run --rm --link mysql_server:mysqlserver -v /host/backup/dir:/backup -e DBUSER=root -e DBPASS=mysecret -e SOURCE=2015-05-13.sql.7z thomass/mysqldump restore
+sudo docker run --rm \
+ --link mysql_server:mysqlserver \
+ -v /host/backup/dir:/backup \
+ -e DBUSER=root \
+ -e DBPASS=mysecret \
+ -e SOURCE=2015-05-13.sql.7z \
+ thomass/mysqldump restore
 ```
 
 1. `mysql_server` - the same like during the backup
@@ -46,6 +58,16 @@ __Predefined variables:__
 The default _DBUSER_ is _root_ and by default all databases becomes backuped, such that both commands could be shortened as follows:
 
 ```
-sudo docker run --rm --link mysql_server:mysqlserver -v /host/backup/dir:/backup -e DBPASS=mysecret thomass/mysqldump backup
-sudo docker run --rm --link mysql_server:mysqlserver -v /host/backup/dir:/backup -e DBPASS=mysecret -e SOURCE=2015-05-13.sql.7z thomass/mysqldump restore
+sudo docker run --rm --link mysql_server:mysqlserver \
+ -v /host/backup/dir:/backup -e DBPASS=mysecret thomass/mysqldump backup
+ 
+sudo docker run --rm --link mysql_server:mysqlserver \
+ -v /host/backup/dir:/backup -e DBPASS=mysecret -e SOURCE=2015-05-13.sql.7z thomass/mysqldump restore
 ```
+
+Licence
+-------
+
+The whole repository is licenced under BSD. Please mention following:
+
+github.com/ThomasSteinbach (thomass at aikq.de)

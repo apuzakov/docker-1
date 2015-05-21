@@ -35,8 +35,6 @@ sudo docker run --rm \
  thomass/backuppath restore
 ```
 
-* `my_volume` - the same like during the backup
-* `/host/backup/path` - the same like during the backup
 * `2015-05-13_backup.tar.7z` - the file created during the backup to restore
 
 Licence

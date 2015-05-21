@@ -15,7 +15,7 @@ Environment Variables
 
 | Variable | Usage     | Description                | Default                  |
 |----------|-----------|----------------------------|--------------------------|
-| SERVER   | optional  | The URL of the DDNS Server | https://ddns.euserv.org' |
+| SERVER   | optional  | The URL of the DDNS Server | https://ddns.euserv.org  |
 | AUTHHASH | mandatory | The authentication hash    | no default               |
 | INTERVAL | optional  | The update time in seconds | 310                      |
 

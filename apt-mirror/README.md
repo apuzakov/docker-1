@@ -31,8 +31,15 @@ The last step is offering the mirror data. Here we use the official docker httpd
 
 # Usage #
 
-Replace the URL inside your ```/etc/apt/sources.list``` with the one from the apache server. For instance:
+On the desired clients replace the URL inside your ```/etc/apt/sources.list``` with the one from the docker apache server. For instance:
 
 ```
 sed -i s/archive.ubuntu.com/<ipToDockerServer>:8888/g /etc/apt/sources.list
 ```
+
+Licence
+-------
+
+The whole repository is licenced under BSD. Please mention following:
+
+github.com/ThomasSteinbach (thomass at aikq.de)

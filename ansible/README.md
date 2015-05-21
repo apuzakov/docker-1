@@ -25,9 +25,9 @@ Variables
 
 Here a description of environment variables for configuring the ansible build.
 
-| Variable        | Description                 | Example             |
-|-----------------|-----------------------------|---------------------|
-| ANSIBLE_VERSION | Which code branch to build. | `--branch v1.9.1-1` |
+| Variable        | Description                 | Example             | Default                     |
+|-----------------|-----------------------------|---------------------|-----------------------------|
+| ANSIBLE_VERSION | Which code branch to build. | `--branch v1.9.1-1` | Latest (no specific branch) |
 
 Licence
 -------

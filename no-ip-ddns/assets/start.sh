@@ -1,8 +1,9 @@
 #!/bin/bash
 
-if [ ! -f /config/noip2.conf ]; then
+if [[ ! -f /config/noip2.conf ]]
+  then
     /root/noip2 -c /config/noip2.conf -C
-else
+  else
     /root/noip2 -c /config/noip2.conf
 
     while true

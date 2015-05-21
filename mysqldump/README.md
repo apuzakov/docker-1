@@ -42,8 +42,6 @@ sudo docker run --rm \
  thomass/mysqldump restore
 ```
 
-* `mysql_server` - the same like during the backup
-* `/host/backup/path` - the same like during the backup
 * `2015-05-13.sql.7z` - the file created during the backup to restore
 
 __Predefined variables:__

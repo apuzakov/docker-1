@@ -1,8 +1,31 @@
+ThomasSteinbach/docker
+======================
+
 This repository contains different Dockerfiles for images of various uses
 
-# DDNS Clients
+Docker baseimages
+-----------------
 
-* no-ip-ddns - client for no-ip.com DDNS
-* euserv-ddns - client for euserv.com DDNS
+* [templates](templates) - just templates for other docker images
+* [ansible](ansible) - a baseimage with ansible installed in
 
-test
+Docker utilies
+--------------
+
+* [mysqldump](mysqldump) - creates mysql dumps of docker mysql containers
+* [backuppath](backuppath) - creates backups of other docker containers volumes
+* 
+
+General Software
+------------------
+
+* [unison](unison) - a dockerized Unison
+* [ssh-client](ssh-client) - a dockerized ssh-client
+* [apt-mirror](apt-mirror) - a debian apt-mirror
+
+DDNS Clients
+------------
+
+* [no-ip-ddns](no-ip-ddns) - client for no-ip.com DDNS
+* [euserv-ddns](euserv-ddns) - client for euserv.com DDNS
+

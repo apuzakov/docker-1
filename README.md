@@ -14,7 +14,6 @@ Docker utilies
 
 * [mysqldump](mysqldump) - creates mysql dumps of docker mysql containers
 * [backuppath](backuppath) - creates backups of other docker containers volumes
-* 
 
 General Software
 ------------------

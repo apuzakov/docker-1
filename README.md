@@ -28,3 +28,9 @@ DDNS Clients
 * [no-ip-ddns](no-ip-ddns) - client for no-ip.com DDNS
 * [euserv-ddns](euserv-ddns) - client for euserv.com DDNS
 
+Licence
+-------
+
+The whole repository is licenced under BSD. Please mention following:
+
+github.com/ThomasSteinbach (thomass at aikq.de)

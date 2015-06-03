@@ -16,8 +16,7 @@ RUN \
  echo "localhost ansible_connection=local" > /etc/ansible/hosts
 
 # dynamic environment variable - set to desired version
-#ENV ANSIBLE_VERSION="--branch v1.9.1-1"
-ENV ANSIBLE_VERSION=""
+ENV ANSIBLE_VERSION="--branch stable-1.9"
 
 # installation process
 RUN \

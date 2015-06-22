@@ -15,11 +15,10 @@ RUN \
  mkdir -p /etc/ansible && \
  echo "localhost ansible_connection=local" > /etc/ansible/hosts
 
-# dynamic environment variable - set to desired version
-ENV ANSIBLE_VERSION="--branch stable-1.9"
+ENV ANSIBLE_VERSION="stable-1.9"
 
 # installation process
 RUN \
  cd /opt && \
- eatmydata git clone ${ANSLIBLE_VERSION} git://github.com/ansible/ansible.git --recursive && \
+ eatmydata git clone --branch ${ANSLIBLE_VERSION} git://github.com/ansible/ansible.git --recursive && \
  /bin/bash -c 'source /opt/ansible/hacking/env-setup'

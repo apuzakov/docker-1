@@ -20,5 +20,5 @@ ENV ANSIBLE_VERSION="stable-1.9"
 # installation process
 RUN \
  cd /opt && \
- eatmydata git clone --branch ${ANSLIBLE_VERSION} git://github.com/ansible/ansible.git --recursive && \
+ eatmydata git clone --branch ${ANSIBLE_VERSION} git://github.com/ansible/ansible.git --recursive && \
  /bin/bash -c 'source /opt/ansible/hacking/env-setup'

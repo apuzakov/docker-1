@@ -11,7 +11,7 @@ ENV MANPATH=/opt/ansible/docs/man:
 RUN \
  apt-get update && \
  DEBIAN_FRONTEND=noninteractive apt-get install -y eatmydata && \
- DEBIAN_FRONTEND=noninteractive eatmydata apt-get -y install git supervisor eatmydata python-paramiko python-yaml python-jinja2 python-httplib2 python-setuptools && \
+ DEBIAN_FRONTEND=noninteractive eatmydata apt-get -y install sudo git supervisor eatmydata python-paramiko python-yaml python-jinja2 python-httplib2 python-setuptools && \
  mkdir -p /etc/ansible && \
  echo "localhost ansible_connection=local" > /etc/ansible/hosts
 

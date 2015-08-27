@@ -13,6 +13,7 @@ RUN echo deb http://www.deb-multimedia.org jessie main non-free >> /etc/apt/sour
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     libpng12-dev \
+    libcurl4-openssl-dev \
     python \
     python-pillow && \
     apt-get update && \
@@ -24,6 +25,7 @@ RUN echo deb http://www.deb-multimedia.org jessie main non-free >> /etc/apt/sour
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
     docker-php-ext-install gd && \
     docker-php-ext-install zip && \
+    docker-php-ext-install curl && \
     a2enmod expires headers rewrite
 
 RUN cd /tmp && \

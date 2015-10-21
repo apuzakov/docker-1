@@ -1,24 +1,16 @@
 FROM ubuntu:15.04
 MAINTAINER Thomas Steinbach <thomas.steinbach@aikq.de>
 
-# static environment variables
-ENV ANSIBLE_HOSTS=/etc/ansible/hosts
-ENV PATH=/opt/ansible/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-ENV PYTHONPATH=/opt/ansible/lib:
-ENV MANPATH=/opt/ansible/docs/man:
-
 # prerequisites
 RUN \
  apt-get update && \
- DEBIAN_FRONTEND=noninteractive apt-get install -y eatmydata && \
- DEBIAN_FRONTEND=noninteractive eatmydata apt-get -y install sudo git supervisor eatmydata python-paramiko python-yaml python-jinja2 python-httplib2 python-setuptools && \
+ DEBIAN_FRONTEND=noninteractive apt-get -y install \
+   sudo \
+   git \
+   # for use in playbook2dockerimage
+   supervisor \
+   python-pip \
+   python-dev && \
  mkdir -p /etc/ansible && \
- echo "localhost ansible_connection=local" > /etc/ansible/hosts
-
-ENV ANSIBLE_VERSION="stable-1.9"
-
-# installation process
-RUN \
- cd /opt && \
- eatmydata git clone --branch ${ANSIBLE_VERSION} git://github.com/ansible/ansible.git --recursive && \
- /bin/bash -c 'source /opt/ansible/hacking/env-setup'
+ echo "localhost ansible_connection=local" > /etc/ansible/hosts && \
+ pip install markupsafe ansible docker-py==1.2.3

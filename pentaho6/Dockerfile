@@ -10,5 +10,5 @@ RUN cd /home/pentaho && \
 
 WORKDIR /home/pentaho/biserver-ce
 
-ENTRYPOINT["/bin/bash"]
-CMD["/home/pentaho/biserver/start-pentaho.sh"]
+ENTRYPOINT ["/bin/bash"]
+CMD ["/home/pentaho/biserver/start-pentaho.sh"]

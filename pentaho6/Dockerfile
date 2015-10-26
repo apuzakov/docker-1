@@ -15,5 +15,6 @@ RUN cd /home/pentaho && \
     rm biserver.zip
 
 WORKDIR /home/pentaho/biserver-ce
+EXPOSE 8080
 
 CMD ["/home/pentaho/biserver-ce/start.sh"]

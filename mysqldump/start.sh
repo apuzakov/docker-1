@@ -7,12 +7,13 @@ function copyMysqlToTemp(){
 }
 
 function backup(){
-  backupfile="/backup/$(date '+%Y-%m-%d').sql.7z"
+  backupfile="/backup/${BACKUP_NAME}.sql.7z"
 
   if [[ -f $backupfile ]]
     then rm "${backupfile}"
   fi
 
+  # MYSQLSERVER_NAME is the name of the linked container created by Docker
   if [[ -z $MYSQLSERVER_NAME ]]
     then backup_local
     else backup_remote
@@ -38,6 +39,7 @@ function backup_local(){
 }
 
 function restore(){
+  # MYSQLSERVER_NAME is the name of the linked container created by Docker
   if [[ -z $MYSQLSERVER_NAME ]]
     then restore_local
     else restore_remote
@@ -46,7 +48,7 @@ function restore(){
 
 function restore_remote(){
   echo "Restore remote database"
-  7zr x -so "/backup/${SOURCE}" | mysql -h mysqlserver -u ${DBUSER:-root} --password=${DBPASS}
+  7zr x -so "/backup/${BACKUP_NAME}" | mysql -h mysqlserver -u ${DBUSER:-root} --password=${DBPASS}
 }
 
 function restore_local(){
@@ -54,7 +56,7 @@ function restore_local(){
   MYSQL_UID=$(stat -c %u /var/lib/mysql)
   MYSQL_GID=$(stat -c %g /var/lib/mysql)
   copyMysqlToTemp
-  7zr x -so "/backup/${SOURCE}" | mysql -u ${DBUSER:-root} --password=${DBPASS:-""}
+  7zr x -so "/backup/${BACKUP_NAME}" | mysql -u ${DBUSER:-root} --password=${DBPASS:-""}
   /etc/init.d/mysql stop
 
   rm -rf /var/lib/mysql/*

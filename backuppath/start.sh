@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # split sources by ':' into an array
-SOURCE=(${SOURCE//:/ })
+PATHS=(${PATHS//:/ })
 BACKUP_DIR="/backup"
 # get the working dir of the script
 BASEDIR=$(dirname $0)

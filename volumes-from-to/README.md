@@ -26,10 +26,15 @@ docker run -it --rm --name test --volumes-from datamap ubuntu bash
 
 - The mapping is a simple symbolic link from _/srv/foo_ --> _/var/foo_. Consider this as some programs would handle symbolic links different.
 
-# further knowledge
+## further knowledge
 You also can map multiple paths with one call:
 
 ```
 docker create --name data -v /var/foo -v /var/bar -v /var/awesome busybox
 docker run --name datamap --volumes-from data -v /srv -v /this/is thomass/volumes-from-to "/var/foo:/srv/foo::/var/bar:/srv/bar::/var/awesome:/this/is/awesome"
 ```
+
+## Licence
+The whole repository is licenced under BSD. Please mention following:
+
+github.com/ThomasSteinbach (thomass at aikq.de)

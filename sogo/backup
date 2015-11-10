@@ -1,0 +1,2 @@
+#!/bin/bash
+sogo-tool backup /backups ALL

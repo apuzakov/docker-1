@@ -1,2 +1,2 @@
 #!/bin/bash
-sogo-tool backup /backups ALL
+sudo -u sogo sogo-tool backup /backups ALL

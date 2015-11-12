@@ -53,6 +53,12 @@ Do not overwrite folloging configuration items, otherwise the default setup won'
 - SOGoUserSources
 - WOPort
 
+## Volumes
+Volumes suitable for a data volume container are:
+- /backups
+- /var/log/sogo
+- /etc/sogo
+
 ## Licence
 The whole repository is licenced under BSD. Please mention following:
 

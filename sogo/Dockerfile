@@ -42,7 +42,7 @@ DocumentRoot "/usr/local/apache2/htdocs"\n\
 $(cat /etc/apache2/conf-available/SOGo.conf)" > /etc/apache2/conf-available/SOGo.conf
 
 VOLUME ["/backups"]
-VOLUME ["/var/logs/sogo"]
+VOLUME ["/var/log/sogo"]
 VOLUME ["/etc/sogo"]
 
 # data dir and available site for official httpd image

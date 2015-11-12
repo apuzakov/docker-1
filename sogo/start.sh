@@ -5,9 +5,14 @@ SERVER_PROTOCOL=${SERVER_PROTOCOL:-http}
 SERVER_NAME=${SERVER_NAME:-localhost}
 SERVER_PORT=${SERVER_PORT:-80}
 
+# check permissions of mounted files
+chown -R root:sogo /etc/sogo
+chmod 750 /etc/sogo
+chmod 640 /etc/sogo/sogo.conf
+
 # database settings
 mysql -h mysql -u root -p${MYSQL_ROOT_PASSWORD} -e "CREATE DATABASE IF NOT EXISTS sogo CHARSET='UTF8';"
-mysql -h mysql -u root -p${MYSQL_ROOT_PASSWORD} -D sogo -e "CREATE TABLE sogo_users (c_uid VARCHAR(10) PRIMARY KEY, c_name VARCHAR(10), c_password VARCHAR(32), c_cn VARCHAR(128), mail VARCHAR(128));"
+mysql -h mysql -u root -p${MYSQL_ROOT_PASSWORD} -D sogo -e "CREATE TABLE IF NOT EXISTS sogo_users (c_uid VARCHAR(10) PRIMARY KEY, c_name VARCHAR(10), c_password VARCHAR(32), c_cn VARCHAR(128), mail VARCHAR(128));"
 
 # sogo server settings
 sudo -u sogo defaults write sogod SOGoUserSources "({canAuthenticate = YES; displayName = \"SOGo Users\"; id = users; isAddressBook = YES; type = sql; userPasswordAlgorithm = md5; viewURL =\"mysql://root:${MYSQL_ROOT_PASSWORD}@mysql:3306/sogo/sogo_users\";})"

@@ -1,0 +1,3 @@
+#!/bin/bash
+read -p "Please paste your public key (id_rsa.pub) here:" pubKey
+echo "${pubKey}" >> root/.ssh/authorized_keys

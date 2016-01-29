@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 function copyMysqlToTemp(){
   cp -a /var/lib/mysql /tmp
   chown -R mysql:mysql /tmp/mysql

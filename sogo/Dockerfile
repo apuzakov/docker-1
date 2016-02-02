@@ -4,7 +4,12 @@ MAINTAINER Thomas Steinbach <thomass@aikq.de>
 RUN echo "deb http://inverse.ca/ubuntu trusty trusty" >> /etc/apt/sources.list && \
     apt-key adv --keyserver keys.gnupg.net --recv-key 0x810273C4 && \
     apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y sogo mysql-client sope4.9-gdl1-mysql && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+      sogo \
+      mysql-client \
+      sope4.9-gdl1-mysql \
+      python2.7 \
+      python && \
     apt-get clean && \
     apt-get autoremove
 

@@ -41,7 +41,7 @@ SERVER_PORT         | 80        | the port the server is called from outside
 Get the untouched config file from the sogo installation:
 
 ```
-docker run thomass/sogo cat /etc/sogo/sogo.conf > sogo.conf
+docker run --rm thomass/sogo cat /etc/sogo/sogo.conf > sogo.conf
 ```
 
 Edit the file and propagate it to the container (as volume or via a data volume container or via `docker cp`).

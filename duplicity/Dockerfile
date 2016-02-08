@@ -6,7 +6,8 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
       duplicity \
       rsync \
-      ssh && \
+      ssh \
+      lftp && \
     apt-get clean
 
 COPY config /root/.ssh/config

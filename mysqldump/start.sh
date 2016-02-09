@@ -16,8 +16,9 @@ function backup(){
     then rm "${backupfile}"
   fi
 
-  # MYSQLSERVER_NAME is the name of the linked container created by Docker
-  if [[ -z $MYSQLSERVER_NAME ]]
+  # Do not change the variable name!
+  # DBSERVER_NAME is the name of the linked container created by Docker
+  if [[ -z $DBSERVER_NAME ]]
     then backup_local
     else backup_remote
   fi
@@ -27,8 +28,8 @@ function backup(){
 function backup_remote(){
   echo "Backup remote database"
   if [[ -z ${DATABASE} ]]
-    then mysqldump -h mysqlserver -u ${DBUSER:-root} --password=${DBPASS:-""} --max_allowed_packet=512m --add-drop-database --all-databases | 7zr a -si "${backupfile}"
-    else mysqldump -h mysqlserver -u ${DBUSER:-root} --password=${DBPASS:-""} --max_allowed_packet=512m --add-drop-database --databases ${DATABASE} | 7zr a -si "${backupfile}"
+    then mysqldump -h dbserver -u ${DBUSER:-root} --password=${DBPASS:-""} --max_allowed_packet=512m --add-drop-database --all-databases | 7zr a -si "${backupfile}"
+    else mysqldump -h dbserver -u ${DBUSER:-root} --password=${DBPASS:-""} --max_allowed_packet=512m --add-drop-database --databases ${DATABASE} | 7zr a -si "${backupfile}"
   fi
 }
 
@@ -42,8 +43,9 @@ function backup_local(){
 }
 
 function restore(){
-  # MYSQLSERVER_NAME is the name of the linked container created by Docker
-  if [[ -z $MYSQLSERVER_NAME ]]
+  # Do not change the variable name!
+  # DBSERVER_NAME is the name of the linked container created by Docker
+  if [[ -z $DBSERVER_NAME ]]
     then restore_local
     else restore_remote
   fi
@@ -51,7 +53,7 @@ function restore(){
 
 function restore_remote(){
   echo "Restore remote database"
-  7zr x -so "/backup/${BACKUP_NAME}" | mysql -h mysqlserver -u ${DBUSER:-root} --password=${DBPASS}
+  7zr x -so "/backup/${BACKUP_NAME}" | mysql -h dbserver -u ${DBUSER:-root} --password=${DBPASS}
 }
 
 function restore_local(){

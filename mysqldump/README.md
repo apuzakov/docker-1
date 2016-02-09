@@ -6,7 +6,7 @@ This is a docker image for making fast and easy backups of dockerized mysql data
 
 **Local:** The mysql datadir _/var/lib/mysql_ will be copied from the remote container and used within an own mysql instance. The foreign container (database) must be stopped.
 
-All following examples show _local_ operations. To swith to _remote_ operations just replace `--volumes-from mysql_server` with `--link mysql_server:mysqlserver`. Mention that `mysql_server` is the arbitrary name of the foreign MySQL container and `mysqlserver` is the internal used name for the remote backup and must be exactly called that way.
+All following examples show _local_ operations. To swith to _remote_ operations just replace `--volumes-from mysql_server` with `--link mysql_server:dbserver`. Mention that `mysql_server` is the arbitrary name of the foreign MySQL container and `dbserver` is the internal used name for the remote backup and must be exactly called that way.
 
 ## Usage
 **Backup:**

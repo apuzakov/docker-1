@@ -7,7 +7,7 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -q -y \
       git \
       openjdk-7-jdk && \
-    git clone https://github.com/IteraSpeed/OpenSpeedMonitor.git
+    git clone --depth 1 --branch v3.3.0 https://github.com/IteraSpeed/OpenSpeedMonitor.git
 
 ADD build.sh OpenSpeedMonitor/build.sh
 

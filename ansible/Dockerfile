@@ -4,6 +4,7 @@ MAINTAINER Thomas Steinbach <thomas.steinbach@aikq.de>
 RUN \
  apt-get update && \
  DEBIAN_FRONTEND=noninteractive apt-get -y install \
+  ssh-client \
   python-pip \
   python-docker
 

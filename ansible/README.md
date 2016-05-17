@@ -1,33 +1,20 @@
 Ansible
 =======
 
-This is a base docker image for running Ansible Playbooks during a Docker build.
-
-* The image is build from code from the ansible git repository.
-* The image not meant to be run standalone and provides no CMD / ENTRYPOINT
+Run Ansible from this Docker container instead of installing Ansible on your machine.
 
 Usage
 -----
 
-* Set `hosts: localhost` in your playbook
-* Run the playbook as following:
+* If you deploy to `localhost`, you playbook must not override the `localhost`
+
+Run
 
 ```
-ADD playbook /playbook/
-RUN \
- cd /playbook && \
- /opt/ansible/bin/ansible-playbook -c local site.yml
+docker run -it --rm -v "/path/to/ansible-artifacts":/ansible -v "$(echo $HOME)/.ssh/id_rsa":/root/.ssh/id_rsa thomass/ansible bash
 ```
 
-
-Variables
----------
-
-Here a description of environment variables for configuring the ansible build.
-
-| Variable        | Description                 | Example             | Default                     |
-|-----------------|-----------------------------|---------------------|-----------------------------|
-| ANSIBLE_VERSION | Which code branch to build. | `--branch v1.9.1-1` | Latest (no specific branch) |
+Then change the directory to `/ansible` and execute your playbook with `--extra-vars "ansible_ssh_user=yourname"`, where `yourname` is your login name to your host machine.
 
 Licence
 -------

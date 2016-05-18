@@ -5,6 +5,7 @@ RUN \
  apt-get update && \
  DEBIAN_FRONTEND=noninteractive apt-get -y install \
   ssh-client \
+  vim \
   python-pip \
   python-docker && \
  apt-get clean && \

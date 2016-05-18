@@ -17,3 +17,4 @@ RUN mkdir -p /etc/ansible && \
 
 RUN adduser --disabled-password --gecos '' uid1000
 USER uid1000
+WORKDIR /home/uid1000/ansible

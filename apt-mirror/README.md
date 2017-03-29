@@ -2,8 +2,8 @@
 Here you can see the general approach to setup and create your package mirror, which is explained afterwards
 
 ```
-sudo docker create -v /var/spool/apt-mirror ubuntu
-sudo docker run --rm --volumes-from pkg_mirror --rm thomass/apt-mirror
+sudo docker create --name pkg_mirror -v /var/spool/apt-mirror ubuntu
+sudo docker run --rm --volumes-from pkg_mirror thomass/apt-mirror
 sudo docker run -it --name www_pkg_data --volumes-from pkg_mirror -v /usr/local/apache2/htdocs ubuntu bash
 sudo docker run -d --name apache_mirror -p 8888:80 --volumes-from www_pkg_data httpd
 ```
